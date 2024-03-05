@@ -18,8 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigation = UINavigationController()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigation
-        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = UIColor(named: "DefaultBackgroundColor", in: Bundle.main, compatibleWith: nil)
         window?.makeKeyAndVisible()
+        navigation?.isNavigationBarHidden = true
         
         let view = PokemonMain.createModule(navigation: self.navigation)
         navigation?.pushViewController(view, animated: true)

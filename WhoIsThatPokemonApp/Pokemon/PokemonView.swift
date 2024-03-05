@@ -13,18 +13,21 @@ class PokemonView: UIViewController {
     var ui: PokemonViewUI?
     
     override func loadView() {
-        ui = PokemonViewUI()
+        ui = PokemonViewUI(delegate: self)
         view = ui
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Mi primera pantalla"
         // Do any additional setup after loading the view.
     }
 }
 
 
 extension PokemonView: PokemonViewProtocol {
+    
+}
+
+extension PokemonView: PokemonViewUIDelegate {
     
 }
