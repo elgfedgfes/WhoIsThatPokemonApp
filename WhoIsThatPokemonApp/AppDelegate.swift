@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         navigation?.isNavigationBarHidden = true
         
-        let view = PokemonMain.createModule(navigation: self.navigation)
+        let view = PKM_PokemonMain.createModule(navigation: self.navigation)
         navigation?.pushViewController(view, animated: true)
         return true
     }

@@ -1,5 +1,5 @@
 //
-//  PokemonMain.swift
+//  PKM_PokemonMain.swift
 //  WhoIsThatPokemonApp
 //
 //  Created by Luis Fernando Sánchez Palma on 04/03/24.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class PokemonMain {
+class PKM_PokemonMain {
     public static func createModule(navigation : UINavigationController?) -> UIViewController {
-        let viewController: PokemonView? = PokemonView()
+        let viewController: PKM_PokemonView? = PKM_PokemonView()
         if let view = viewController {
-            let presenter = PokemonPresenter()
-            let router = PokemonRouter()
-            let interactor = PokemonInteractor()
+            let presenter = PKM_PokemonPresenter()
+            let router = PKM_PokemonRouter()
+            let interactor = PKM_PokemonInteractor()
             
             view.presenter = presenter
             

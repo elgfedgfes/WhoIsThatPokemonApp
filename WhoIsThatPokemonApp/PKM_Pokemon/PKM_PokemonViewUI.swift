@@ -1,5 +1,5 @@
 //
-//  PokemonViewUI.swift
+//  PKM_PokemonViewUI.swift
 //  WhoIsThatPokemonApp
 //
 //  Created by Luis Fernando Sánchez Palma on 04/03/24.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol PokemonViewUIDelegate {
+protocol PKM_PokemonViewUIDelegate {
     
 }
 
-class PokemonViewUI: UIView {
-    var delegate: PokemonViewUIDelegate?
+class PKM_PokemonViewUI: UIView {
+    var delegate: PKM_PokemonViewUIDelegate?
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView (frame: .zero)
@@ -115,6 +115,12 @@ class PokemonViewUI: UIView {
         btn.setTitle("Flaaffy", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
+        btn.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        btn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        btn.layer.shadowOpacity = 1.0
+        btn.layer.shadowRadius = 0
+        btn.layer.masksToBounds = false
+        btn.layer.cornerRadius = 10.0
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -124,6 +130,12 @@ class PokemonViewUI: UIView {
         btn.setTitle("Staravia", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
+        btn.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        btn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        btn.layer.shadowOpacity = 1.0
+        btn.layer.shadowRadius = 0
+        btn.layer.masksToBounds = false
+        btn.layer.cornerRadius = 10.0
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -133,6 +145,12 @@ class PokemonViewUI: UIView {
         btn.setTitle("Carvanha", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
+        btn.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        btn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        btn.layer.shadowOpacity = 1.0
+        btn.layer.shadowRadius = 0
+        btn.layer.masksToBounds = false
+        btn.layer.cornerRadius = 10.0
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -142,6 +160,12 @@ class PokemonViewUI: UIView {
         btn.setTitle("Pikachu", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
+        btn.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        btn.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        btn.layer.shadowOpacity = 1.0
+        btn.layer.shadowRadius = 0
+        btn.layer.masksToBounds = false
+        btn.layer.cornerRadius = 10.0
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -154,7 +178,7 @@ class PokemonViewUI: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public convenience init(delegate: PokemonViewUIDelegate) {
+    public convenience init(delegate: PKM_PokemonViewUIDelegate) {
         self.init()
         self.delegate = delegate
         setupUIElements()
