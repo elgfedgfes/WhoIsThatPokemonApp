@@ -12,6 +12,7 @@ class PKM_PokemonView: UIViewController {
     
     var presenter: PKM_PokemonPresenterProtocol?
     var ui: PKM_PokemonViewUI?
+    private var pokemonGameManager = PokemonGameRules()
     private var random4Pokemons: [PokemonModel] = [] {
         didSet {
             setButtonTitles()
@@ -42,6 +43,12 @@ class PKM_PokemonView: UIViewController {
             }
         }
     }
+    
+    func resetGame() {
+        pokemonGameManager.setScore(score: 0)
+        ui?.headerScore.text = "Puntaje: \(pokemonGameManager.score)"
+        ui?.pokemonMessage.text = " "
+    }
 }
 
 
@@ -66,5 +73,30 @@ extension PKM_PokemonView: PKM_PokemonViewProtocol {
 }
 
 extension PKM_PokemonView: PKM_PokemonViewUIDelegate {
+    func notifyUserAnswer(_ sender: UIButton) {
+        let userAnswer = sender.title(for: .normal) ?? ""
+        if pokemonGameManager.checkAnswer(userAnswer, correctAnswer) {
+            ui?.pokemonMessage.text = "Sí, es un \(userAnswer)"
+            ui?.headerScore.text = "Puntaje: \(pokemonGameManager.score)"
+            let url = URL(string: correctAnswerImage)
+            ui?.pokemonImage.kf.setImage(with: url)
+            ui?.changeStrokeColorButton(sender, correctAnswer: true)
+            Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] timer in
+                self?.presenter?.requestPokemon()
+                self?.ui?.pokemonMessage.text = " "
+                self?.ui?.restoreStrokeButton(sender)
+            }
+        } else {
+            ui?.pokemonMessage.text = "Nooo, es un \(correctAnswer)"
+            let url = URL(string: correctAnswerImage)
+            ui?.pokemonImage.kf.setImage(with: url)
+            ui?.changeStrokeColorButton(sender, correctAnswer: false)
+            Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] timer in
+                self?.presenter?.requestPokemon()
+                self?.resetGame()
+                self?.ui?.restoreStrokeButton(sender)
+            }
+        }
+    }
     
 }

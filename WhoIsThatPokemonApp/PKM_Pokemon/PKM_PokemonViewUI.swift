@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PKM_PokemonViewUIDelegate {
-    
+    func notifyUserAnswer(_ sender: UIButton)
 }
 
 class PKM_PokemonViewUI: UIView {
@@ -93,7 +93,7 @@ class PKM_PokemonViewUI: UIView {
     
     lazy var pokemonMessage: UILabel = {
        let label = UILabel()
-        label.text = "Sí, es un Pikachu"
+        label.text = " "
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 21)
         label.textColor = .black
@@ -123,6 +123,7 @@ class PKM_PokemonViewUI: UIView {
         btn.layer.shadowRadius = 0
         btn.layer.masksToBounds = false
         btn.layer.cornerRadius = 10.0
+        btn.addTarget(self, action: #selector(self.answerButtonTriggered), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -138,6 +139,7 @@ class PKM_PokemonViewUI: UIView {
         btn.layer.shadowRadius = 0
         btn.layer.masksToBounds = false
         btn.layer.cornerRadius = 10.0
+        btn.addTarget(self, action: #selector(self.answerButtonTriggered), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -153,6 +155,7 @@ class PKM_PokemonViewUI: UIView {
         btn.layer.shadowRadius = 0
         btn.layer.masksToBounds = false
         btn.layer.cornerRadius = 10.0
+        btn.addTarget(self, action: #selector(self.answerButtonTriggered), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -168,6 +171,7 @@ class PKM_PokemonViewUI: UIView {
         btn.layer.shadowRadius = 0
         btn.layer.masksToBounds = false
         btn.layer.cornerRadius = 10.0
+        btn.addTarget(self, action: #selector(self.answerButtonTriggered), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
        return btn
     }()
@@ -215,7 +219,7 @@ class PKM_PokemonViewUI: UIView {
             scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 10),
             
             cardView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             cardView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -235,5 +239,24 @@ class PKM_PokemonViewUI: UIView {
             stackButtons.trailingAnchor.constraint(equalTo: stackContainer.trailingAnchor, constant: -20)
             
         ])
+    }
+    
+    @objc func answerButtonTriggered(_ sender: UIButton) {
+        delegate?.notifyUserAnswer(sender)
+    }
+    
+    func changeStrokeColorButton(_ sender: UIButton, correctAnswer: Bool) {
+        if correctAnswer {
+            sender.layer.borderWidth = 2
+            sender.layer.borderColor = UIColor.systemGreen.cgColor
+        } else {
+            sender.layer.borderWidth = 2
+            sender.layer.borderColor = UIColor.systemRed.cgColor
+        }
+    }
+    
+    func restoreStrokeButton(_ sender: UIButton) {
+        sender.layer.borderWidth = 0
+        sender.layer.borderColor = UIColor.white.cgColor
     }
 }
