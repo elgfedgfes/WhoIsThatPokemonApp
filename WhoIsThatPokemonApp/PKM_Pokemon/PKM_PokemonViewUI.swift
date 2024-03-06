@@ -14,6 +14,8 @@ protocol PKM_PokemonViewUIDelegate {
 class PKM_PokemonViewUI: UIView {
     var delegate: PKM_PokemonViewUIDelegate?
     
+    lazy var pokemonAnswerButtons: [UIButton] = [firstButton, secondButton, thirdButton, fourthButton]
+    
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView (frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false

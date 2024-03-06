@@ -14,5 +14,21 @@ class PKM_PokemonPresenter {
 }
 
 extension PKM_PokemonPresenter : PKM_PokemonPresenterProtocol {
+    func requestPokemon() {
+        //Mostrar loader desde view
+        interactor?.fetchPokemon()
+    }
     
+    func responsePokemonList(pokemonList: [PokemonModel]) {
+        view?.displayPokemon(pokemonList: pokemonList)
+    }
+    
+    func requestPokemonImage(urlImage: String) {
+        interactor?.fetchPokemonImage(urlImage: urlImage)
+    }
+    
+    func responsePokemonImage(image: String) {
+        view?.displayPokemonImage(image: image)
+    }
+
 }
