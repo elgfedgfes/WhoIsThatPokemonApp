@@ -15,7 +15,6 @@ class PKM_PokemonPresenter {
 
 extension PKM_PokemonPresenter : PKM_PokemonPresenterProtocol {
     func requestPokemon() {
-        //Mostrar loader desde view
         interactor?.fetchPokemon()
     }
     

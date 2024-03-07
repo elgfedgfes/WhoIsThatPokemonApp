@@ -8,6 +8,8 @@
 import Foundation
 
 protocol PKM_PokemonViewProtocol: AnyObject {
+    func showLoader()
+    func dismissLoader()
     func displayPokemon(pokemonList: [PokemonModel])
     func displayPokemonImage(image: String)
 }
