@@ -15,22 +15,24 @@ class PKM_PokemonInteractor {
 
 extension PKM_PokemonInteractor: PKM_PokemonInteractorProtocol {
     func fetchPokemon() {
-        pokemonListWebService.getListPokemon { [weak self] responseList, responseCode, responseError in
-            guard let pokemonList = responseList else {
-                //Mensaje de error al view
-                return
+        pokemonListWebService.getListPokemon { [weak self] result in
+            switch result {
+            case .success(let responseData):
+                self?.presenter?.responsePokemonList(pokemonList: responseData)
+            case .failure(let error):
+                print("Error: \(error)")
             }
-            self?.presenter?.responsePokemonList(pokemonList: pokemonList)
         }
     }
     
     func fetchPokemonImage(urlImage: String) {
-        pokemonImageWebService.getImagePokemon(urlImage: urlImage) { [weak self] responseImage, responseCode, responseError in
-            guard let pokemonImage = responseImage else {
-                //Mensaje de error al view
-                return
+        pokemonImageWebService.getImagePokemon(urlImage: urlImage) { [weak self] result in
+            switch result {
+            case .success(let responseData):
+                self?.presenter?.responsePokemonImage(image: responseData.imageURL)
+            case .failure(let error):
+                print("Error: \(error)")
             }
-            self?.presenter?.responsePokemonImage(image: pokemonImage.imageURL)
         }
     }
 }

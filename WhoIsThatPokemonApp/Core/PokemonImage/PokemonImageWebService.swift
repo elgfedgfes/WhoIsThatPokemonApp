@@ -8,7 +8,7 @@
 import Foundation
 
 internal class PokemonImageWebService: NSObject {
-    func getImagePokemon(urlImage: String, completionHandler: @escaping (PokemonImageModel?, Int, String)->Void) {
+    func getImagePokemon(urlImage: String, completion: @escaping (Result<PokemonImageModel, NetworkError>) -> Void) {
         // MARK: - Create/get URL
         if let urlObject = URL(string: urlImage) {
             var urlRequest = URLRequest(url: urlObject)
@@ -17,10 +17,19 @@ internal class PokemonImageWebService: NSObject {
             let session = URLSession(configuration: .default)
             // MARK: - Give the session a task
             let task = session.dataTask(with: urlRequest) {data, response, error in
-                if let responseData = data {
-                    if let json = self.parseJSON(pokemonImageData: responseData) {
-                        completionHandler(json, 200, "")
-                    }
+                
+                if let _ = error {
+                    completion(.failure(NetworkError.badResponse(data)))
+                    return
+                }
+                
+                guard let returnedData = data else {
+                    completion(.failure(NetworkError.noResponse))
+                    return
+                }
+                
+                if let json = self.parseJSON(pokemonImageData: returnedData) {
+                    completion(.success(json))
                 }
             }
             // MARK: - Start the task

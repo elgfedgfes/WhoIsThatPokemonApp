@@ -8,7 +8,7 @@
 import Foundation
 
 internal class PokemonWebService: NSObject {
-    func getListPokemon(completionHandler: @escaping ([PokemonModel]?, Int, String)->Void) {
+    func getListPokemon(completion: @escaping (Result<[PokemonModel], NetworkError>) -> Void) {
         let pokemonURL: String = "https://pokeapi.co/api/v2/pokemon?limit=1302"
         // MARK: - Create/get URL
         if let urlObject = URL(string: pokemonURL) {
@@ -18,10 +18,19 @@ internal class PokemonWebService: NSObject {
             let session = URLSession(configuration: .default)
             // MARK: - Give the session a task
             let task = session.dataTask(with: urlRequest) {data, response, error in
-                if let responseData = data {
-                    if let json = self.parseJSON(pokemonData: responseData) {
-                        completionHandler(json, 200, "")
-                    }
+                
+                if let _ = error {
+                    completion(.failure(NetworkError.badResponse(data)))
+                    return
+                }
+                
+                guard let returnedData = data else {
+                    completion(.failure(NetworkError.noResponse))
+                    return
+                }
+                
+                if let json = self.parseJSON(pokemonData: returnedData) {
+                    completion(.success(json))
                 }
             }
             // MARK: - Start the task
