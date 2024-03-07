@@ -26,6 +26,9 @@
 		5641DCC42B96B4BD00D8C908 /* PokemonImageWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641DCC32B96B4BD00D8C908 /* PokemonImageWebService.swift */; };
 		56833ADA2B9925120099FF55 /* PokemonGameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56833AD92B9925120099FF55 /* PokemonGameRules.swift */; };
 		56833ADD2B99342B0099FF55 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56833ADC2B99342B0099FF55 /* NetworkError.swift */; };
+		56833AE02B9942BB0099FF55 /* PKMN_GameOverMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56833ADF2B9942BB0099FF55 /* PKMN_GameOverMain.swift */; };
+		56833AE22B9942CB0099FF55 /* PKMN_GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56833AE12B9942CB0099FF55 /* PKMN_GameOverView.swift */; };
+		56833AE42B9942D40099FF55 /* PKMN_GameOverViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56833AE32B9942D40099FF55 /* PKMN_GameOverViewUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		5641DCC32B96B4BD00D8C908 /* PokemonImageWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonImageWebService.swift; sourceTree = "<group>"; };
 		56833AD92B9925120099FF55 /* PokemonGameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonGameRules.swift; sourceTree = "<group>"; };
 		56833ADC2B99342B0099FF55 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		56833ADF2B9942BB0099FF55 /* PKMN_GameOverMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKMN_GameOverMain.swift; sourceTree = "<group>"; };
+		56833AE12B9942CB0099FF55 /* PKMN_GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKMN_GameOverView.swift; sourceTree = "<group>"; };
+		56833AE32B9942D40099FF55 /* PKMN_GameOverViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKMN_GameOverViewUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 				56377C4F2B97F86000E8AE08 /* Components */,
 				5641DCB62B96B15C00D8C908 /* Core */,
 				5618A6B82B96557D005A81A4 /* PKM_Pokemon */,
+				56833ADE2B99427D0099FF55 /* PKMN_GameOver */,
 				5618A6AD2B9647B5005A81A4 /* Assets.xcassets */,
 				5618A6AF2B9647B5005A81A4 /* LaunchScreen.storyboard */,
 				5618A6B22B9647B5005A81A4 /* Info.plist */,
@@ -159,6 +166,16 @@
 				56833ADC2B99342B0099FF55 /* NetworkError.swift */,
 			);
 			path = ServiceManager;
+			sourceTree = "<group>";
+		};
+		56833ADE2B99427D0099FF55 /* PKMN_GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				56833ADF2B9942BB0099FF55 /* PKMN_GameOverMain.swift */,
+				56833AE12B9942CB0099FF55 /* PKMN_GameOverView.swift */,
+				56833AE32B9942D40099FF55 /* PKMN_GameOverViewUI.swift */,
+			);
+			path = PKMN_GameOver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,15 +257,18 @@
 				56833ADA2B9925120099FF55 /* PokemonGameRules.swift in Sources */,
 				56833ADD2B99342B0099FF55 /* NetworkError.swift in Sources */,
 				5618A6BE2B96562C005A81A4 /* PKM_PokemonInteractor.swift in Sources */,
+				56833AE42B9942D40099FF55 /* PKMN_GameOverViewUI.swift in Sources */,
 				5618A6BC2B96561F005A81A4 /* PKM_PokemonViewUI.swift in Sources */,
 				5618A6C02B965654005A81A4 /* PKM_PokemonPresenter.swift in Sources */,
 				5618A6C22B965662005A81A4 /* PKM_PokemonProtocols.swift in Sources */,
+				56833AE22B9942CB0099FF55 /* PKMN_GameOverView.swift in Sources */,
 				5618A6C42B965671005A81A4 /* PKM_PokemonEntity.swift in Sources */,
 				5618A6BA2B96560B005A81A4 /* PKM_PokemonMain.swift in Sources */,
 				5641DCC22B96B4AB00D8C908 /* PokemonImageResponse.swift in Sources */,
 				5641DCBC2B96B44D00D8C908 /* PokemonWebService.swift in Sources */,
 				56377C512B97F88900E8AE08 /* Collection+Extension.swift in Sources */,
 				5641DCBA2B96B43C00D8C908 /* PokemonResponse.swift in Sources */,
+				56833AE02B9942BB0099FF55 /* PKMN_GameOverMain.swift in Sources */,
 				5618A6C62B965679005A81A4 /* PKM_PokemonRouter.swift in Sources */,
 				5641DCC42B96B4BD00D8C908 /* PokemonImageWebService.swift in Sources */,
 				5618A6A92B9647B4005A81A4 /* PKM_PokemonView.swift in Sources */,

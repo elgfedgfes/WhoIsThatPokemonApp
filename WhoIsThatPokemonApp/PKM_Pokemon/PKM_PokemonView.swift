@@ -87,16 +87,27 @@ extension PKM_PokemonView: PKM_PokemonViewUIDelegate {
                 self?.ui?.restoreStrokeButton(sender)
             }
         } else {
-            ui?.pokemonMessage.text = "Nooo, es un \(correctAnswer)"
-            let url = URL(string: correctAnswerImage)
-            ui?.pokemonImage.kf.setImage(with: url)
-            ui?.changeStrokeColorButton(sender, correctAnswer: false)
-            Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] timer in
-                self?.presenter?.requestPokemon()
-                self?.resetGame()
-                self?.ui?.restoreStrokeButton(sender)
-            }
+//            ui?.pokemonMessage.text = "Nooo, es un \(correctAnswer)"
+//            let url = URL(string: correctAnswerImage)
+//            ui?.pokemonImage.kf.setImage(with: url)
+//            ui?.changeStrokeColorButton(sender, correctAnswer: false)
+//            Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] timer in
+//                self?.presenter?.requestPokemon()
+//                self?.resetGame()
+//                self?.ui?.restoreStrokeButton(sender)
+//            }
+            ui?.restoreStrokeButton(sender)
+            let controller = PKMN_GameOverMain.createModule(delegate: self, correctAnswer: correctAnswer, correctAnswerImage: correctAnswerImage, finalScore: pokemonGameManager.score)
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true, completion: nil)
         }
     }
     
+}
+
+extension PKM_PokemonView: PKMN_GameOverViewDelegate {
+    func notifyPlayAgainFormResults() {
+        presenter?.requestPokemon()
+        resetGame()
+    }
 }
